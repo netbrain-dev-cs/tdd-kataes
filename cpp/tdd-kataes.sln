@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gmock-hello", "gmock-hello\gmock-hello.vcxproj", "{8A48A143-EF83-4031-891F-CE4152F61656}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soundex", "soundex\soundex.vcxproj", "{073DBBDB-007A-4A9F-ABF1-DB0A3DA86844}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +17,10 @@ Global
 		{8A48A143-EF83-4031-891F-CE4152F61656}.Debug|Win32.Build.0 = Debug|Win32
 		{8A48A143-EF83-4031-891F-CE4152F61656}.Release|Win32.ActiveCfg = Release|Win32
 		{8A48A143-EF83-4031-891F-CE4152F61656}.Release|Win32.Build.0 = Release|Win32
+		{073DBBDB-007A-4A9F-ABF1-DB0A3DA86844}.Debug|Win32.ActiveCfg = Debug|Win32
+		{073DBBDB-007A-4A9F-ABF1-DB0A3DA86844}.Debug|Win32.Build.0 = Debug|Win32
+		{073DBBDB-007A-4A9F-ABF1-DB0A3DA86844}.Release|Win32.ActiveCfg = Release|Win32
+		{073DBBDB-007A-4A9F-ABF1-DB0A3DA86844}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
