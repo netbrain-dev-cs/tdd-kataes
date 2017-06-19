@@ -52,4 +52,5 @@ Thumbs.db
 *.lastbuildstate
 *.obj
 *.idb
+*.suo
 
