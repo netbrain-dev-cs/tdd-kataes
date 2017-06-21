@@ -54,3 +54,6 @@ Thumbs.db
 *.idb
 *.suo
 
+*.opendb
+*.db
+*.ipch
