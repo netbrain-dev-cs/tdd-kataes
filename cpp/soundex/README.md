@@ -1,36 +1,33 @@
-# TddKatas
-������������ʵ����katas for test drive development
+#soundex 练习
+===
 
-#soundex ��ϰ
-�ٶȰٿƣ�http://baike.baidu.com/link?url=K1FzBIVBMwFF_S_T3PaJ0ijDe0JuwusFsVh0TIQZ4a16CdlyMUbpf6trEwOo6nYYDwG_GqucPcp13pUaNXPTra
-ά���ٿƣ�https://zh.wikipedia.org/wiki/Soundex
+#说明：
+---
 
-Soundex[�༭]
-ά���ٿƣ����ɵİٿ�ȫ��
-Soundex��һ�������㷨������Ӣ���ֵĶ����������ֵ��ֵ���ĸ��ַ����ɣ���һ���ַ�ΪӢ����ĸ��������Ϊ���֡���ƴ����������ʱ���л������ƴ����ȷ�ֵ����Σ�����Soundex������ģ��ƥ���Ч��������Knuth��Kant�����ַ��������ǵ�Soundexֵ���ǡ�K530�������ڵ��Դ�ʦ�ߵ���������������������������������ϸ�Ľ��ܡ�
-�㷨��Ҫ˵��[�༭]
-��Ӣ���ְ����¹����滻������һ���ַ��⣩��
-   a e h i o u w y -> 0
-   b f p v -> 1
-   c g j k q s x z -> 2
-   d t -> 3
-   l -> 4
-   m n -> 5
-   r -> 6
-ȥ��0�������ظ����ַ�ֻ����һ��
-����ǰ4���ַ�������4λ��0����
-��Knuth��KantΪ����
-   Knuth -> K5030 -> K53 -> K530
-   Kant  -> K053  -> K53 -> K530
-�ⲿ����[�༭]
-The Soundex Indexing System (U.S. National Archives and Records Administration)
-���ࣺ����ѧ�����㷨
+百度百科：http://baike.baidu.com/link?url=K1FzBIVBMwFF_S_T3PaJ0ijDe0JuwusFsVh0TIQZ4a16CdlyMUbpf6trEwOo6nYYDwG_GqucPcp13pUaNXPTra
 
-# cpp
-C++ code
+维基百科：https://zh.wikipedia.org/wiki/Soundex
 
-# javascript
+Soundex[编辑]
+维基百科，自由的百科全书<br>
 
-# java
+Soundex是一种语音算法，利用英文字的读音计算近似值，值由四个字符构成，第一个字符为英文字母，后三个为数字。在拼音文字中有时会有会念但不能拼出正确字的情形，可用Soundex做类似模糊匹配的效果。例如Knuth和Kant二个字符串，它们的Soundex值都是“K530”。其在电脑大师高德纳名著《计算机程序设计艺术》都有详细的介绍。<br>
 
-# python
+算法简要说明[编辑]<br>
+将英文字按以下规则替换（除第一个字符外）：<br>
+      a e h i o u w y -> 0<br>
+         b f p v -> 1<br>
+         c g j k q s x z -> 2<br>
+         d t -> 3<br>
+         l -> 4<br>
+         m n -> 5<br>
+         r -> 6<br>
+去除0，对于重复的字符只保留一个<br>
+返回前4个字符，不足4位以0补足<br>
+以Knuth和Kant为例：<br>
+   Knuth -> K5030 -> K53 -> K530<br>
+   Kant  -> K053  -> K53 -> K530<br>
+外部链接[编辑]<br>
+The Soundex Indexing System (U.S. National Archives and Records Administration)<br>
+分类：语音学语音算法<br>
+
