@@ -5,8 +5,19 @@ class Soundex
 {
 public:
 	std::string encode(const std::string & word) {
-		return word + "000";
+		auto  encoded = word.substr(0, 1);
+		if (word.size() > 1) {
+			encoded += "1";
+		}
+
+		return zeroPad(encoded);
 	}
+
+	std::string zeroPad(const std::string & word) {
+		auto zerosNeeded = 4 - word.size();
+		return word + std::string(zerosNeeded, '0');
+	}
+
 
 };
 
@@ -19,7 +30,14 @@ public:
 
 TEST_F(SoundexEncoding, RetainSoleLetterOfOneLetterWord)
 {
-	auto encoded = soundex.encode("A");
+	EXPECT_EQ(soundex.encode("A"), "A000");
+}
 
-	EXPECT_EQ(encoded, "A000");
+TEST_F(SoundexEncoding, PadsWithZeroToEnsureThreeDigits)
+{
+	EXPECT_EQ(soundex.encode("I"), "I000");
+}
+
+TEST_F(SoundexEncoding, RetainSoleLetterOfTwoLetterWord) {
+	EXPECT_EQ(soundex.encode("Ab"), "A100");
 }
