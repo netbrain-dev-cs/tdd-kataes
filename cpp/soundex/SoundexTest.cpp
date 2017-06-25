@@ -23,9 +23,13 @@ public:
 		std::string result;
 		for (auto ch : word) {
 			result += (encodeDigit(ch));
-			if (result.size() == MAX_CODE_LENGTH - 1)break;
+			if (IsComplete(result))break;
 		}
 		return result;
+	}
+
+	bool IsComplete(const std::string & encode) {
+		return encode.size() == MAX_CODE_LENGTH - 1;
 	}
 
 	std::string encodeDigit(const char letter) {
