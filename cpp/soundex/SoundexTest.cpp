@@ -1,4 +1,4 @@
-#include <gtest/gtest.h>
+﻿#include <gtest/gtest.h>
 #include <string>
 #include <map>
 
@@ -29,7 +29,8 @@ public:
 			{ 'm',"5" }, { 'n',"5" },
 			{ '4',"6" }
 		};
-		return encodings.find(letter)->second;
+		auto it = encodings.find(letter);
+		return it == encodings.end()?"":(it)->second;
 	}
 
 
@@ -56,7 +57,13 @@ TEST_F(SoundexEncoding, PadsWithZeroToEnsureThreeDigits)
 	EXPECT_EQ(soundex.encode("I"), "I000");
 }
 
-TEST_F(SoundexEncoding, RetainSoleLetterOfTwoLetterWord) {
+TEST_F(SoundexEncoding, RetainSoleLetterOfTwoLetterWord)
+{
 	EXPECT_EQ(soundex.encode("Ab"), "A100");
 	EXPECT_EQ(soundex.encode("Ac"), "A200");
+}
+
+TEST_F(SoundexEncoding,IgnoreNoneAlphabetics)
+{
+	ASSERT_EQ(soundex.encode("A#"), "A000");
 }
