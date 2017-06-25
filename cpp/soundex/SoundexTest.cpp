@@ -37,7 +37,7 @@ public:
 	std::string encodeDigits(const std::string & word) {
 		std::string result;
 		for (auto ch : word) {
-			if (IsComplete(result))break;
+			if (isComplete(result))break;
 			if (lastDigit(result) == encodeDigit(ch))continue;
 			result += encodeDigit(ch);			
 		}
@@ -49,7 +49,7 @@ public:
 		return std::string(1, encoding.back());
 	}
 
-	bool IsComplete(const std::string & encode) {
+	bool isComplete(const std::string & encode) {
 		return encode.size() == MAX_CODE_LENGTH - 1;
 	}
 
