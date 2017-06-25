@@ -62,7 +62,8 @@ public:
 			{ 'm',"5" }, { 'n',"5" },
 			{ '4',"6" }
 		};
-		auto it = encodings.find(letter);
+		
+		auto it = encodings.find(tolower(letter));
 		return it == encodings.end()?"":(it)->second;
 	}
 
@@ -118,4 +119,9 @@ TEST_F(SoundexEncoding, RetainSoleLetterOfMoreLetterWord)
 TEST_F(SoundexEncoding, LimitResultOfForeLetterWord)
 {
 	EXPECT_EQ(soundex.encode("Abcdfg"), "A123");
+}
+
+TEST_F(SoundexEncoding, IgnoreCaseWhenEncodingConsonants)
+{
+	EXPECT_EQ(soundex.encode("BCDL"), soundex.encode("Bcdl"));
 }
