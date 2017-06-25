@@ -56,6 +56,11 @@ TEST_F(SoundexEncoding, IgnoreCaseWhenEncodingConsonants)
 	EXPECT_EQ(soundex.encode("BCDL"), soundex.encode("Bcdl"));
 }
 
+TEST_F(SoundexEncoding, UpperCaseTheFirstLetter)
+{
+	EXPECT_EQ(soundex.encode("abcd"),"A123");
+}
+
 //忽略相邻的重复编码
 TEST_F(SoundexEncoding, CombineDuplicateEncodings)
 {
@@ -65,3 +70,9 @@ TEST_F(SoundexEncoding, CombineDuplicateEncodings)
 
 	EXPECT_EQ(soundex.encode("Abfcgdt"), "A123");
 }
+
+//更多的测试，查找是否有漏掉的需求
+//TEST_F(SoundexEncoding, MoreComplextTestForLeakedRequrest)
+//{
+//	EXPECT_EQ(soundex.encode("h"))
+//}
