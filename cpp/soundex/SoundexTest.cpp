@@ -37,13 +37,16 @@ public:
 	std::string encodeDigits(const std::string & word) {
 		std::string result;
 		for (auto ch : word) {
-			std::string encode = encodeDigit(ch);
-			if (encode.empty())continue;
-			if (!result.empty() && result.back() == encode[0])continue;
-			result += encode;
 			if (IsComplete(result))break;
+			if (lastDigit(result) == encodeDigit(ch))continue;
+			result += encodeDigit(ch);			
 		}
 		return result;
+	}
+
+	std::string lastDigit(const std::string & encoding) {
+		if (encoding.empty())return "";
+		return std::string(1, encoding.back());
 	}
 
 	bool IsComplete(const std::string & encode) {
