@@ -24,7 +24,7 @@ public:
 	const std::string NOT_A_DIGIT{"*"};
 
 	std::string encode(const std::string & word) {
-		return zeroPad(head(word) + encodeDigits(tail(word)));
+		return zeroPad(head(word) + tail(encodeDigits(word)));
 	}
 
 	std::string head(const std::string & word) {
@@ -38,7 +38,9 @@ public:
 	std::string encodeDigits(const std::string & word) {
 		std::string encoding;
 
-		for (auto letter : word) {
+		encoding += encodeDigit(word.front());
+
+		for (auto letter : tail(word)) {
 			if (isComplete(encoding))break;
 
 			std::string digit = encodeDigit(letter);
@@ -49,12 +51,12 @@ public:
 	}
 
 	std::string lastDigit(const std::string & encoding) {
-		if (encoding.empty())return "";
+		if (encoding.empty())return NOT_A_DIGIT;
 		return std::string(1, encoding.back());
 	}
 
 	bool isComplete(const std::string & encode) {
-		return encode.size() == MAX_CODE_LENGTH - 1;
+		return encode.size() == MAX_CODE_LENGTH ;
 	}
 
 	std::string encodeDigit(const char letter) {
