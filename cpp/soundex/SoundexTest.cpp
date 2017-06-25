@@ -8,16 +8,23 @@ public:
 	static const size_t MAX_CODE_LENGTH = 4;
 
 	std::string encode(const std::string & word) {
-		return zeroPad(head(word) + encodeDigits(word));
+		return zeroPad(head(word) + encodeDigits(tail(word)));
 	}
 
 	std::string head(const std::string & word) {
 		return word.substr(0, 1);
 	}
 
+	std::string tail(const std::string & word) {
+		return word.substr(1);
+	}
+
 	std::string encodeDigits(const std::string & word) {
-		if (word.size() > 1) return encodeDigit(word[1]);
-		return "";
+		std::string result;
+		for (auto ch : word) {
+			result += (encodeDigit(ch));
+		}
+		return result;
 	}
 
 	std::string encodeDigit(const char letter) {
@@ -66,4 +73,10 @@ TEST_F(SoundexEncoding, RetainSoleLetterOfTwoLetterWord)
 TEST_F(SoundexEncoding,IgnoreNoneAlphabetics)
 {
 	ASSERT_EQ(soundex.encode("A#"), "A000");
+}
+
+TEST_F(SoundexEncoding, RetainSoleLetterOfMoreLetterWord)
+{
+	EXPECT_EQ(soundex.encode("Abc"), "A120");
+	EXPECT_EQ(soundex.encode("Abcd"), "A123");
 }
