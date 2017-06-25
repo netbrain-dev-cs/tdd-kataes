@@ -87,6 +87,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SoundexTest.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="soundex.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
