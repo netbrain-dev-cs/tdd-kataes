@@ -38,12 +38,12 @@ public:
 	std::string encodeDigits(const std::string & word) {
 		std::string encoding;
 
-		for (auto ch : word) {
+		for (auto letter : word) {
 			if (isComplete(encoding))break;
 
-			std::string digit = encodeDigit(ch);
-			if (digit != NOT_A_DIGIT && lastDigit(encoding) != encodeDigit(ch))
-				encoding += encodeDigit(ch);
+			std::string digit = encodeDigit(letter);
+			if (digit != NOT_A_DIGIT && lastDigit(encoding) != encodeDigit(letter))
+				encoding += encodeDigit(letter);
 		}
 		return encoding;
 	}
