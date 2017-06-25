@@ -23,6 +23,7 @@ public:
 		std::string result;
 		for (auto ch : word) {
 			result += (encodeDigit(ch));
+			if (result.size() == MAX_CODE_LENGTH - 1)break;
 		}
 		return result;
 	}
@@ -79,4 +80,9 @@ TEST_F(SoundexEncoding, RetainSoleLetterOfMoreLetterWord)
 {
 	EXPECT_EQ(soundex.encode("Abc"), "A120");
 	EXPECT_EQ(soundex.encode("Abcd"), "A123");
+}
+
+TEST_F(SoundexEncoding, LimitResultOfForeLetterWord)
+{
+	EXPECT_EQ(soundex.encode("Abcdfg"), "A123");
 }
