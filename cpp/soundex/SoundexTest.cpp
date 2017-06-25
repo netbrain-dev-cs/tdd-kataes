@@ -21,6 +21,7 @@ class Soundex
 {
 public:
 	static const size_t MAX_CODE_LENGTH = 4;
+	const std::string NOT_A_DIGIT{"*"};
 
 	std::string encode(const std::string & word) {
 		return zeroPad(head(word) + encodeDigits(tail(word)));
@@ -35,13 +36,16 @@ public:
 	}
 
 	std::string encodeDigits(const std::string & word) {
-		std::string result;
+		std::string encoding;
+
 		for (auto ch : word) {
-			if (isComplete(result))break;
-			if (lastDigit(result) == encodeDigit(ch))continue;
-			result += encodeDigit(ch);			
+			if (isComplete(encoding))break;
+
+			std::string digit = encodeDigit(ch);
+			if (digit != NOT_A_DIGIT && lastDigit(encoding) != encodeDigit(ch))
+				encoding += encodeDigit(ch);
 		}
-		return result;
+		return encoding;
 	}
 
 	std::string lastDigit(const std::string & encoding) {
@@ -64,7 +68,7 @@ public:
 		};
 		
 		auto it = encodings.find(tolower(letter));
-		return it == encodings.end()?"":(it)->second;
+		return it == encodings.end()? NOT_A_DIGIT :(it)->second;
 	}
 
 
